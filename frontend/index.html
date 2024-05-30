@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WalletWatch</title>
+    <link rel="icon" href="../img/logo.png">
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("../img/bacg.avif");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        canvas {
+            border: 1px solid #000;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-info text-warning fixed-top"
+        style="background-color: rgb(41, 108, 184);">
+        <div class="container-fluid ">
+            <div>
+                <img src="../img/logo.png" alt="" style="width: 50px;">
+                <a class="navbar-brand text-light" href="#">WalletWatch</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item text-light">
+                        <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#record">Record</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#history">Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#balance">Balance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div style="margin-top: 80px;">
+        <h1 class="text-center m-5 text-primary">Welcome to <br> WalletWatch</h1>
+    </div>
+
+    <div class="d-flex justify-content-center" style="">
+        <div class="text-center text-center align-content-center">
+            <h4>
+                Your ultimate companion for
+                managing and tracking your finances effortlessly. With <span class="text-primary">WalletWatch</span>,
+                you can easily
+                track your income, expenses, and
+                savings all in one place. Stay in control of your money, set financial goals, and watch your wealth
+                grow.
+                Start your journey towards financial success today with WalletWatch.
+            </h4>
+        </div>
+        <div class="d-none d-md-block">
+            <img src="../img/logo.png" alt="" srcset="">
+        </div>
+    </div>
+    <div class="mt-5 pt-5" id="record">
+        <h1 class="text-center m-5 text-primary">Record your finance here</h1>
+        <div class="d-flex justify-content-center">
+            <form class="d-flex flex-column justify-content-center p-5 rounded rounded-5 text-light" id="form"
+                action="http://localhost:5050/exp" method="post" target="form_target"
+                style="background-color: rgb(120, 124, 198) !important;">
+                <div>
+                    <label for="category">Category</label> <br>
+                    <select id="category" class="border rounded rounded-5" name="category" style="width: 200px;">
+                        <option value="Expense">Expense</option>
+                        <option value="Income">Income</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="amount">Amount</label> <br>
+                    <input type="number" class="border rounded rounded-5" id="amount" name="amount" style="width: 200px;">
+                </div>
+                <div>
+                    <label for="info">Reason</label> <br>
+                    <input type="text" class="border rounded rounded-5" id="info" name="reason" style="width: 200px;">
+                </div>
+                <div>
+                    <label for="amount">Date</label> <br>
+                    <input type="date" class="border rounded rounded-5" id="date" name="expdate" style="width: 200px;">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger my-3" id="addBtn"
+                        style="width: 100px;">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="mt-5" id="history">
+        <h1 class="text-center text-primary">Transaction history</h1>
+        <div class="d-flex justify-content-center">
+            <table class="bg-success" border="1" id="dataTable" style="background-color: rgb(96, 18, 23) !important;">
+                <tr class="bg-warning-subtle text-light">
+                    <th class="p-3">Category</th>
+                    <th class="p-3">Amount</th>
+                    <th class="p-3">Info</th>
+                    <th class="p-3">Date</th>
+                    <th class="p-3">Delete</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class=" d-flex justify-content-center m-5  align-content-center" id="myProfile">
+        <div class=" text-light bg-info p-5 rounded rounded-5" style="background-color: rgb(18, 22, 96) !important;">
+            <h1 class="text-center">Balance</h1>
+            <div>
+                <h3 id="totalIncome">Your total income 0 </h3>
+                <h3 id="totalExpense">Your total expense 0</h3>
+                <h3 id="balance">Your total balance 0</h3>
+                <h3 id="status"></h3>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer bg-dark" style="background-color: rgb(49, 49, 49) !important;">
+        <div class="d-flex container text-center justify-content-between">
+            <p class="text-light">All preserved ©2024</p>
+            <p class="text-light">By Lalisa Ejeta Gusare</p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
